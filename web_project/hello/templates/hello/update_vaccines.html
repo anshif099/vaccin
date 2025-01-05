@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+{% load static %} 
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vacci-Update</title>
+  <link rel="icon" href="{% static 'hello/media/vaccine-logo.png' %}" type="image/png">
+  <link rel="stylesheet" href="{% static 'hello/register-login.css' %}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-size: contain;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      width: 100%;
+      padding: 0 10px;
+      background: url("{% static 'hello/media/Register-login.avif' %}") no-repeat center center fixed;
+      background-size: cover;
+    }
+    body::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: url("{% static 'hello/media/Register-login.avif' %}") no-repeat center center fixed;
+      background-size: cover;
+      z-index: -1;
+    }
+    .form-check {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .form-check label {
+      margin-left: 10px;
+    }
+    .wrapper {
+      background: rgba(255, 255, 255, 0.8);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    button {
+      background-color: #007bff;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .available-vaccine:checked {
+      background-color: blue;
+      border-color: blue;
+    }
+  </style>
+</head>
+<body>
+  <div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <div class="wrapper">
+      <form action="/updatevc/" method="POST">
+        {% csrf_token %}
+        <h2 class="mb-3">Update Vaccine Stock</h2>
+        
+        <div class="mb-3">
+          <label for="centerId" class="form-label">Center ID</label>
+          <input type="number" class="form-control" name="txtCenterid" id="txtCenterid" value="{{ report.CenterID }}" readonly required>
+        </div>
+       
+        <div class="mb-3">
+          <label for="centerName" class="form-label">Enter Your Center Name</label>
+          <input type="text" class="form-control" name="txtCn" id="centerName" value="{{ report.CN }}" placeholder="Enter Your Center Name" readonly required>
+        </div>
+    
+
+        <div class="mb-3">
+          <label for="date" class="form-label">Enter Vaccinating Date</label>
+          <input type="date" class="form-control" id="date" name="txtDate" required>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Select Vaccines:</label>
+
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input available-vaccine" id="dtp" name="txtDtp" value="DTP" {% if report.DTP == 'DTP' %} checked {% endif %}>
+            <label for="dtp" class="form-check-label">DTP</label>
+          </div>
+
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input available-vaccine" id="hep-b" name="txtHepatitisb" value="Hepatitis B" {% if report.HepatitisB == 'Hepatitis B' %} checked {% endif %}>
+            <label for="hep-b" class="form-check-label">Hepatitis B</label>
+          </div>
+
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input available-vaccine" id="polio" name="txtPolio" value="Polio" {% if report.Polio == 'Polio' %} checked {% endif %}>
+            <label for="polio" class="form-check-label">Polio</label>
+          </div>
+
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input available-vaccine" id="hib" name="txtHib" value="Hib" {% if report.Hib == 'Hib' %} checked {% endif %}>
+            <label for="hib" class="form-check-label">Hib</label>
+          </div>
+
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input available-vaccine" id="rotavirus" name="txtRotavirus" value="Rotavirus" {% if report.Rotavirus == 'Rotavirus' %} checked {% endif %}>
+            <label for="rotavirus" class="form-check-label">Rotavirus</label>
+          </div>
+
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input available-vaccine" id="pcv" name="txtPcv" value="PCV" {% if report.PCV == 'PCV' %} checked {% endif %}>
+            <label for="pcv" class="form-check-label">PCV</label>
+          </div>
+
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input available-vaccine" id="influenza" name="txtInfluenza" value="Influenza" {% if report.Influenza == 'Influenza' %} checked {% endif %}>
+            <label for="influenza" class="form-check-label">Influenza</label>
+          </div>
+
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input available-vaccine" id="mmr" name="txtmmr" value="MMR" {% if report.MMR == 'MMR' %} checked {% endif %}>
+            <label for="mmr" class="form-check-label">MMR</label>
+          </div>
+
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input available-vaccine" id="vitamin-a" name="txtVitamina" value="Vitamin A" {% if report.VitaminA == 'Vitamin A' %} checked {% endif %}>
+            <label for="vitamin-a" class="form-check-label">Vitamin A</label>
+          </div>
+
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input available-vaccine" id="varicella" name="txtVaricella" value="Varicella" {% if report.Varicella == 'Varicella' %} checked {% endif %}>
+            <label for="varicella" class="form-check-label">Varicella</label>
+          </div>
+
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input available-vaccine" id="hep-a" name="txtHepatitisa" value="Hepatitis A" {% if report.HepatitisA == 'Hepatitis A' %} checked {% endif %}>
+            <label for="hep-a" class="form-check-label">Hepatitis A</label>
+          </div>
+
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input available-vaccine" id="tt" name="txtTt" value="TT" {% if report.TT == 'TT' %} checked {% endif %}>
+            <label for="tt" class="form-check-label">TT</label>
+          </div>
+
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input available-vaccine" id="hpv" name="txtHpv" value="HPV" {% if report.HPV == 'HPV' %} checked {% endif %}>
+            <label for="hpv" class="form-check-label">HPV</label>
+          </div>
+          
+        </div>
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

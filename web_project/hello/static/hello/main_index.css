@@ -1,0 +1,677 @@
+body {
+    background-color: #f7f7f7; /* Soft off-white */
+    /* You can use any lighter grayish tone, like #eaeaea or #f2f2f2 */
+    color: #333; /* Adjust text color to dark gray for better contrast */
+  }
+
+  .logo{
+    max-width: 100px; /* Adjust as needed for your design */
+    max-height: 50px;
+    padding: 0; /* Remove extra padding */
+    margin: 0; /* Remove unnecessary margin */
+    position: relative;
+
+  }
+
+  @media (max-width: 768px) {
+    /* Ensure logo is visible on smaller screens */
+    .logo {
+        max-height: 40px;
+        margin-left: 0;
+      
+    }
+  }
+
+  .navbar-brand {
+    padding: 0; /* Remove padding around the brand link */
+    margin: 0; /* Remove unnecessary margin */
+    display: flex; /* Ensures proper alignment */
+    align-items: center; /* Center-align the logo vertically */
+  }
+
+
+  .navbar-nav .nav-link {
+    font-size: 1.2rem; /* Increase font size */
+    font-weight: 500;  /* Optional: Make text slightly bold */
+    margin: 0 10px;    /* Add horizontal spacing between links */
+    position: relative;
+    transition: color 0.3s ease;
+    
+  }
+  .navbar-nav .nav-link::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px; /* Adjust the distance of the underline from the text */
+    width: 0;
+    height: 2px; /* Thickness of the underline */
+    background-color: #1e7e6d; /* Underline color (matches hover color) */
+    transition: width 0.3s ease; /* Smooth transition for underline width */
+  }
+  .navbar-nav .nav-link:hover {
+    color: #1e7e6d; /* Change text color on hover (optional) */
+  }
+  .navbar-nav .nav-link:hover::after {
+    width: 100%; /* Expand the underline to full width on hover */
+  }
+
+/* Hero Section */
+/* Typing Effect */
+/* Typing Effect */
+/* Typing Effect */
+.typing-effect {
+    display: inline-block;
+    font-size: 2.5rem; /* Adjust text size */
+    color: #fff;
+    white-space: nowrap; /* Prevent text wrapping */
+    overflow: hidden; /* Hide overflowing text */
+    border-right: 3px solid #fff; /* Cursor effect */
+    animation: typing 6s steps(45, end) infinite, blink 0.7s step-end infinite; /* Typing effect */
+    max-width: 100%; /* Ensure the text doesn't exceed container width */
+    padding-right: 10px; /* Add padding to prevent clipping of last character */
+  }
+  
+  /* Keyframes for Typing */
+  @keyframes typing {
+    from {
+      width: 0; /* Start with no text */
+    }
+    to {
+      width: calc(100% + 10px); /* Add extra width to ensure full text is shown */
+    }
+  }
+  
+  /* Keyframes for Blinking Cursor */
+  @keyframes blink {
+    50% {
+      border-color: transparent; /* Hide the cursor for a blinking effect */
+    }
+  }
+  
+  /* Media Query for Smaller Screens */
+  @media (max-width: 768px) {
+    .typing-effect {
+      font-size: 1.8rem; /* Reduce font size on smaller screens */
+      width: 95%; /* Adjust width to ensure it fits */
+      padding-right: 10px; /* Prevent text clipping */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .typing-effect {
+      font-size: 1.5rem; /* Further reduce font size for very small screens */
+      width: 100%; /* Full width for tiny screens */
+      padding-right: 12px; /* Add extra buffer for safety */
+    }
+  }
+  
+  
+.hero-section {
+    background: url('https://source.unsplash.com/1600x900/?children,vaccine') no-repeat center center/cover;
+    color: white;
+    padding: 100px 0;
+  }
+  #vaccine-info {
+    background-color: #f7f7f7; /* Slightly dimmed white background */
+    color: #333; /* Dark text color */
+    padding: 50px 0;
+  }
+  
+  #vaccine-info h2 {
+    font-size: 1.8rem;
+    color: #696969 ; /* Blue color for headers */
+  }
+  
+  #vaccine-info p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+  
+  #vaccine-info img {
+    max-width: 100%; /* Ensures image is responsive */
+    height: auto;
+    object-fit: cover; /* Keeps the image proportional */
+  }
+  
+  @media (max-width: 768px) {
+    #vaccine-info {
+      padding: 30px 0; /* Adjust padding for smaller screens */
+    }
+    #vaccine-info h2 {
+      font-size: 1.5rem; /* Smaller header for mobile */
+    }
+    #vaccine-info p {
+      font-size: 1rem; /* Adjust paragraph text size for mobile */
+    }
+  }
+/* Style the heading similar to navbar links */
+.main-heading {
+    font-size: 2.5rem; /* Increase font size */
+    font-weight: 700; /* Make the text bold */
+    color: #d3d3d3; /* Same color as the navbar links */
+    text-transform: uppercase; /* Make the heading uppercase */
+    letter-spacing: 1px; /* Space out the letters slightly */
+    text-align: center;
+    position: relative; /* For the underline effect */
+    margin-bottom: 20px;
+    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+  }
+  
+  /* Underline Effect (same as navbar links) */
+  .main-heading::after {
+    content: "";
+    position: absolute;
+    bottom: -5px; /* Position the line just below the text */
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #1e7e6d; /* Same color as navbar links */
+    transition: width 0.3s ease-in-out;
+  }
+  .main-heading:hover {
+    color: #d3d3d3; /* lightly green on hover */
+    transform: scale(1.1); /* Enlarge the heading slightly */
+  }
+  
+  /* Hover Effect (Underline Animation) */
+  .main-heading:hover::after {
+    width: 100%; /* Make the underline span the entire width of the text */
+  }
+  /* Zoom Effect on Image */
+.zoom-image {
+    transition: transform 0.3s ease-in-out; /* Smooth transition for scaling */
+  }
+  /* On Hover: Zoom-in Effect */
+.zoom-image:hover {
+    transform: scale(1.1); /* Enlarge the image by 10% */
+  }
+  /* Main Objective Description Styling */
+.main-description {
+    font-family: 'Poppins', sans-serif; /* Use the new font */
+    font-size: 1.1rem; /* Slightly increase font size */
+    font-weight: 300; /* Make the text light and elegant */
+    line-height: 1.8; /* Add spacing between lines for better readability */
+    color: #0B0B0B; /* Use a darker gray for better contrast */
+    text-align: justify; /* Align the text neatly */
+  }
+
+  /* Main Objective Section */
+#main-objective {
+    background-color: #ffffff; /* White background */
+    overflow: hidden; /* Ensure shape doesn’t overflow */
+    position: relative;
+  }
+
+  /* Half-Round Shape */
+.half-round-shape {
+    position: absolute;
+    top: 0;
+    left: -40%; /* Adjust to move the shape left */
+    width: 75%; /* Width of the half-round */
+    height: 30%;
+    background-color: #1e7e6d; /* Custom color */
+    border-radius: 0 50% 1760% 0; /* Half-round shape */
+    z-index: 1; /* Send behind the content */
+    transition: transform 0.4s ease, box-shadow 0.4s ease; /* Smooth animation */
+  }
+
+  .half-round-shape:hover{
+    transform: scale(1.1); /* Scale the shape slightly larger */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Add a shadow for depth */
+  }
+
+  /* Content */
+#main-objective .container {
+    position: relative;
+    z-index: 2; /* Bring the content above the shape */
+  }
+
+  @media (max-width: 501px) {
+    .half-round-shape {
+      width: 150%; /* Extend the shape */
+      left: 0; /* Align to the left edge */
+      border-radius: 0 0 50% 50%; /* Adjust to create a bottom-rounded shape */
+    }
+  
+    .main-heading {
+      font-size: 2rem; /* Slightly smaller text */
+    }
+  }
+  /* Benefits Section Styling */
+#benefits {
+    background-color: #f9f9f9; /* Soft light gray background */
+  }
+  
+  .benefits-heading {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #d3d3d3; /* Match theme */
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    position: relative;
+   
+  }
+  .benefits-heading::after{
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #1e7e6d;
+    transition: width 0.3s ease-in-out;
+
+  }
+  
+  .benefits-heading:hover {
+    color: #1e7e6d; /* Darker blue on hover */
+    transform: scale(1.1);
+  }
+  .benefits-heading:hover::after{
+    width: 100%; 
+
+  }
+  
+  .benefit-icon {
+    margin-bottom: 1rem;
+    
+  }
+  
+  .benefit-title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 1.25rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+  }
+  
+  .benefit-description {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1rem;
+    color: #555555;
+    line-height: 1.6;
+  }
+
+  .card{
+    padding: 10px;
+    border-radius: 10px;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition */
+    background-color: #ffffff; /* Default white background */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card:hover{
+    background-color: rgba(30, 126, 109, 0.2); /* Light transparent green fill */
+    transform: scale(1.05); /* Slight zoom-in effect */
+    transform: translateY(-10px); /* Slight lift on hover */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Elevated shadow */
+  }
+
+  .card-title{
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #333;
+  }
+  
+  .card-text {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1rem;
+    color: #4B4B4B;
+    line-height: 1.6;
+  }
+
+  /* Section Background */
+#how-it-works {
+    background-color: #f8f9fa; /* Light gray */
+  }
+  /* Heading Styling */
+.how-heading {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #d3d3d3; /* Match theme */
+    text-transform: uppercase;
+    text-align: center;
+    position: relative;
+    margin-bottom: 1.5rem;
+    transition: color 0.3s ease-in-out;
+  }
+
+  .how-heading::after{
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #1e7e6d;
+    transition: width 0.3s ease-in-out;
+
+  }
+
+  .how-heading:hover {
+    
+    transform: scale(1.1);
+  }
+
+  .how-heading:hover::after{
+    width: 100%; 
+  }
+
+  /* Description Styling */
+.how-description {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.1rem;
+    color: #0B0B0B; /* Use a darker gray for better contrast */
+    line-height: 1.8;
+    text-align: justify;
+    margin-bottom: 1.5rem;
+  }
+
+  /* List Styling */
+.how-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .how-list li {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 0.75rem;
+    margin-left: 100px;
+    display: flex;
+    align-items: center;
+  }
+
+  .how-list i {
+    margin-right: 0.5rem;
+  }
+
+  /* Image Styling */
+.how-image {
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    max-width: 100%;
+    height: auto;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .how-image:hover {
+    transform: scale(1.05); /* Slight zoom-in effect */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+  }
+
+  /* Half-Round Shape for How It Works Section */
+.half-round-shape-how {
+    position: absolute;
+    top: 0;
+    left: -40%; /* Adjust to move the shape left */
+    width: 75%; /* Width of the half-round */
+    height: 75%;
+    background-color: #1e7e6d; /* Custom color */
+    border-radius: 0 100% 1760% 0; /* Half-round shape */
+    z-index: 1; /* Send behind the content */
+    transition: transform 0.4s ease, box-shadow 0.4s ease; /* Smooth animation */
+  }
+
+  /* Ensure content stays above the shape */
+#how-it-works .container {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Optional Hover Effect for the Half-Round Shape */
+.half-round-shape-how:hover {
+    transform: scale(1.1); /* Slight zoom-in effect */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Add a shadow for depth */
+  }
+
+  /* Styling for the heading */
+#services h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #d3d3d3; /* Green color */
+    text-align: center;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 10px; /* Space for the underline */
+  }
+
+  /* Underline Animation */
+#services h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background-color: #1e7e6d; /* Green underline */
+    transition: width 0.4s ease; /* Animate the width */
+  }
+
+  /* Hover Effect */
+#services h2:hover::after {
+    width: 100%; /* Underline grows to full width */
+  }
+
+  #services h2:hover {
+    color: #1e7e6d; /* Green text color on hover */
+    transform: scale(1.1); /* Zoom-in effect */
+    transition: transform 0.3s ease, color 0.3s ease; /* Smooth transition */
+  }
+
+  /* Service Card Styling */
+.service-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    background-color: #ffffff; /* Default white background */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effects */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .service-card:hover {
+    transform: scale(1.05); /* Slight zoom-in effect */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+    
+  }
+
+  /* Add the animated gradient effect */
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%; /* Start off-screen */
+    width: 300%; /* Ensures smooth animation */
+    height: 100%;
+    background: linear-gradient(
+      120deg,
+      rgba(30, 126, 109, 0.1),
+      rgba(30, 126, 109, 0.3),
+      rgba(30, 126, 109, 0.1)
+    );
+    transition: opacity 0.3s ease;
+    opacity: 0; /* Hide the gradient by default */
+    z-index: 0; /* Place behind content */
+    transform: skewX(-25deg); /* Create a diagonal fill effect */
+  }
+
+  .service-card:hover::before {
+    animation: gradient-slide 1.5s linear infinite; /* Continuous left-to-right motion */
+    opacity: 1; /* Show the gradient when hovered */
+  }
+
+  /* Animation for the gradient */
+@keyframes gradient-slide {
+    0% {
+      left: -100%;
+    }
+    100% {
+      left: 100%;
+    }
+  }
+
+  /* Ensure content inside the card stays above the gradient */
+.service-card * {
+    position: relative;
+    z-index: 1;
+  }
+  
+
+  .service-card h4 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1e7e6d; /* Green heading */
+  }
+
+  .service-card p {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.95rem;
+    color: #4B4B4B; /* Dark gray for better readability */
+  }
+
+  .service-card i {
+    color: #1e7e6d; /* Green icon color */
+  }
+
+  
+  
+  
+  
+    
+  
+
+  
+  /* About Section */
+  .about-section {
+    background-color: #f9f9f9;
+  }
+
+  /* Circular Image Styling */
+.circle-img-container {
+    width: 300px;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 50%;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .circle-img-container img {
+    width: 80%;
+    height: 80%;
+    object-fit: cover;
+  }
+
+  /* Add hover effect to circular images */
+.circle-img-container:hover {
+    transform: scale(1.1);
+  }
+
+  /* Styling for headings */
+#about-us h2 {
+    font-size: 2.5rem;
+    color: #d3d3d3;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+
+  #about-us h2:hover{
+    color: #1e7e6d; /* Matches theme color */
+    transform: scale(1.1); /* Zoom-in effect */
+    transition: transform 0.3s ease, color 0.3s ease; /* Smooth transition */
+  }
+
+  #about-us h2::after {
+    content: '';
+    width: 0;
+    height: 3px;
+    background-color: #1e7e6d;
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+  }
+
+  #about-us h2:hover::after{
+    width: 100%;
+  }
+  
+
+  /* Styling for the About Us descriptions */
+#about-us p {
+    font-family: 'Poppins', sans-serif; /* Apply Poppins font */
+    font-size: 1rem;
+    color: #555; /* Slightly dark gray for readability */
+    line-height: 1.8; /* Improves text spacing */
+    margin-bottom: 15px;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  /* Hover effect for description text */
+  #about-us p:hover {
+    color: #1e7e6d; /* Matches theme color */
+  }
+
+  #contact-us h2 {
+    color: #d3d3d3;
+    font-family: 'Poppins', sans-serif;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease; /* Smooth zoom-in effect */
+  }
+
+  #contact-us h2:hover{
+    transform: scale(1.1); /* Zoom in on hover */
+    color: #d3d3d3; /* Ensure color stays the same on hover */
+  }
+  
+  #contact-us p {
+    color: #d3d3d3;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    margin-bottom: 40px;
+    transition: transform 0.3s ease; /* Smooth zoom-in effect */
+  }
+
+  #contact-us p:hover{
+    transform: scale(1.05); /* Slight zoom-in effect */
+    color: #d3d3d3; /* Ensure color stays the same on hover */
+  }
+
+  
+  #contact-us a:hover i {
+    color: #25d366; /* Lighter green for hover effect */
+    transform: scale(1.2);
+    transition: all 0.3s ease-in-out;
+  }
+  
+
+  
+  
+  /* Footer */
+  #footer h4 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+  }
+  
+  #footer a:hover {
+    color: #1e7e6d; /* Light green color on hover */
+    text-decoration: underline;
+  }
+  
+  #footer i:hover {
+    color: #1e7e6d; /* Light green color on hover for icons */
+    transform: scale(1.2);
+    transition: all 0.3s ease-in-out;
+  }
+  
+  

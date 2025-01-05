@@ -1,0 +1,233 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="icon" href="{% static 'hello/media/vaccine-logo.png' %}" type="image/png">
+    <link rel="stylesheet" href="{% static 'hello/profile.css' %}">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #f5f5f5;
+            padding: 10px 20px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .logo img {
+            height: 40px;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #007BFF;
+            font-size: 14px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .logout-button {
+            background-color: #ff4d4d;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .logout-button a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .logout-button:hover {
+            background-color: #e63939;
+        }
+
+        .profile-icon a {
+            font-size: 20px;
+            color: #007BFF;
+        }
+
+        .profile-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            max-width: 400px;
+        }
+
+        .profile-picture img {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border: 2px solid #007BFF;
+        }
+
+        .profile-details {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .profile-details h2 {
+            margin: 5px 0;
+            color: #333;
+        }
+
+        .profile-details p {
+            margin: 0;
+            color: #666;
+        }
+
+        .feedback {
+            margin-top: 20px;
+        }
+
+        .feedback button {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .feedback button:hover {
+            background-color: #0056b3;
+        }
+
+        .feedback button a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            background-color: #f5f5f5;
+            border-top: 1px solid #ddd;
+            font-size: 14px;
+            color: #666;
+        }
+
+        footer span {
+            font-weight: bold;
+            color: #007BFF;
+        }
+
+        @media (max-width: 600px) {
+            .profile-container {
+                width: 90%;
+            }
+
+            nav {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+            }
+
+            .logout-button {
+                font-size: 12px;
+                padding: 4px 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <img src="{% static 'hello/media/vaccine-logo.png' %}" alt="Vaccine Logo">
+    </div>
+    <nav>
+        <a href="/centerhome/">Home</a>
+        <button class="logout-button"><a href="/mainIndex/">Logout</a></button>
+        <div class="profile-icon"><a href="/centerProfile/">👤</a></div>
+    </nav>
+</header>
+
+<div class="profile-container">
+    <div class="profile-picture">
+        <img src="{% static 'hello/media/profile_icon.png' %}" alt="Profile Icon">
+    </div>
+    <div class="profile-details">
+        {% for profile in profile %}
+            <h2>Center ID: {{ profile.CenterID }}</h2>
+            <p>Center Name: {{ profile.CN }}</p>
+            <p>Next Vaccination Date: {{ profile.Date }}</p>
+            <h2>Available Stocks</h2>
+            {% if profile.DTP and profile.DTP != "false" %}
+                <p>{{ profile.DTP }}</p>
+            {% endif %}
+            {% if profile.HepatitisB and profile.HepatitisB != "false" %}
+                <p>{{ profile.HepatitisB }}</p>
+            {% endif %}
+            {% if profile.Polio and profile.Polio != "false" %}
+                <p>{{ profile.Polio }}</p>
+            {% endif %}
+            {% if profile.Hib and profile.Hib != "false" %}
+                <p>{{ profile.Hib }}</p>
+            {% endif %}
+            {% if profile.Rotavirus and profile.Rotavirus != "false" %}
+                <p>{{ profile.Rotavirus }}</p>
+            {% endif %}
+            {% if profile.PCV and profile.PCV != "false" %}
+                <p>{{ profile.PCV }}</p>
+            {% endif %}
+            {% if profile.Influenza and profile.Influenza != "false" %}
+                <p>{{ profile.Influenza }}</p>
+            {% endif %}
+            {% if profile.MMR and profile.MMR != "false" %}
+                <p>{{ profile.MMR }}</p>
+            {% endif %}
+            {% if profile.VitaminA and profile.VitaminA != "false" %}
+                <p>{{ profile.VitaminA }}</p>
+            {% endif %}
+            {% if profile.Varicella and profile.Varicella != "false" %}
+                <p>{{ profile.Varicella }}</p>
+            {% endif %}
+            {% if profile.HepatitisA and profile.HepatitisA != "false" %}
+                <p>{{ profile.HepatitisA }}</p>
+            {% endif %}
+            {% if profile.TT and profile.TT != "false" %}
+                <p>{{ profile.TT }}</p>
+            {% endif %}
+            {% if profile.HPV and profile.HPV != "false" %}
+                <p>{{ profile.HPV }}</p>
+            {% endif %}
+        {% endfor %}
+    </div>
+    <div class="feedback">
+        <button><a href="/centerfeedback/" class="text-color">Feedback</a></button>
+    </div>
+</div>
+
+<footer>
+    &copy; Get Vaccinated for a <span>Healthier Tomorrow</span>
+</footer>
+
+</body>
+</html>

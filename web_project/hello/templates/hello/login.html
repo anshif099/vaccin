@@ -1,0 +1,67 @@
+ {% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vacci-login</title>
+  <link rel="icon" href="{% static 'hello/media/vaccine-logo.png' %}" type="image/png">
+  <link rel="stylesheet" href="{% static 'hello/register-login.css' %}">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+      body {
+    
+    background-size: contain;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    width: 100%;
+    padding: 0 10px;
+    background: url("{% static 'hello/media/Register-login.avif' %}") no-repeat center center fixed;
+    background-size: cover; /* Ensure background covers the full screen */
+  }
+  
+  body::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url("{% static 'hello/media/Register-login.avif' %}") no-repeat center center fixed;
+    background-size: cover; /* Adjust the image size */
+    z-index: -1; /* Make sure the background is behind the content */
+  }
+    </style>
+</head>
+<body>
+  <div class="wrapper">
+    <form method="POST" action="/DBLogin/">
+      <h2>Login</h2>
+      {% csrf_token %}
+        <div class="input-field">
+          <input type="text" name="txtEmail" class="form-control" placeholder="Enter your email" required>
+      </div>
+      <div class="input-field">
+        <input type="password" name="txtPassword" class="form-control" placeholder="Enter your password" required>
+      </div>
+      <p style="color:red">{{ error }}</p>
+      <div class="forget">
+        <label for="remember">
+          <input type="checkbox" id="remember">
+          <p>Remember me</p>
+        </label>
+        <a href="/password_reset/">ForgotPassword?</a>
+
+      </div>
+      <button type="submit" action="/index/">Log In</button>
+      <div class="register">
+        <p>Don't have an account? <a href="/register/">Register</a></p>
+      </div>
+    </form>
+  </div>
+  <!-- {{error}} -->
+    <!-- Bootstrap JS (Optional) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

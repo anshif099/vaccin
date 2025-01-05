@@ -1,0 +1,91 @@
+/* General Styling */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #bbeee3; /* Slightly green background */
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    color: #333;
+  }
+  
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+header img {
+    height: 40px;
+}
+header nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+header nav a {
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+}
+.logout {
+    background-color: rgb(234, 11, 11);
+    color: rgb(247, 240, 240);
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+}
+  /* Booking Card Styling */
+  .booking-card {
+    width: 300px;
+    height: 300px;
+    background: linear-gradient(135deg, #1E7E6D, #145F4B);
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    text-decoration: none; /* Remove underline */
+  }
+  
+  .booking-card:hover {
+    transform: scale(1.1);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Booking Text Styling */
+  .booking-text {
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    position: relative;
+    text-transform: uppercase;
+    animation: textZoom 2s infinite ease-in-out;
+  }
+  
+  /* Animation for Booking Text */
+  @keyframes textZoom {
+    0%, 100% {
+      letter-spacing: 2px;
+      transform: scale(1);
+    }
+    50% {
+      letter-spacing: 6px;
+      transform: scale(1.1);
+    }
+  }
+  
+  footer {
+    text-align: center;
+    padding: 10px;
+    font-size: 14px;
+    color: gray;
+    background-color: white;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+  

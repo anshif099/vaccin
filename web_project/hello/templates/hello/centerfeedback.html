@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback</title>
+    <link rel="stylesheet" href="{% static 'hello/feedback.css' %}">
+    <link rel="icon" href="{% static 'hello/media/vaccine-logo.png' %}" type="image/png">
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <link rel="icon" href="{% static 'hello/media/vaccine-logo.png' %}" type="image/png">
+    </div>
+    <nav>
+        <a href="/centerhome/">Home</a>
+        <button class="logout-button"><a href="/mainIndex/">Logout</a></button>
+        <div class="profile-icon"><a href="/centerProfile/">👤</a></div>
+    </nav>
+</header>
+
+<form class="feedback-container" action="/centerfeedback/" method="post">
+    {% csrf_token %}
+    <div class="feedback-form">
+        <h2>Feedback</h2>
+        <input type="text" placeholder="Enter your name" maxlength="50" name="txtFun">
+        <textarea placeholder="Write your feedback here.../100" maxlength="100" name="txtFeed"></textarea>
+        <button type="submit">Submit</button>
+    </div>
+</form>
+
+
+<footer>
+    &copy; Get Vaccinated for a <span>Healthier Tomorrow</span>
+</footer>
+
+</body>
+</html>

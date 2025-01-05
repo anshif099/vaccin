@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Vaccine Support</title>
+    <!-- Add Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .sidebar {
+            background-color: #343a40;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250px;
+            padding-top: 20px;
+            z-index: 1000;
+        }
+
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            display: block;
+        }
+
+        .sidebar a:hover {
+            background-color: #007bff;
+        }
+
+        .navbar {
+            background-color: #343a40;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .navbar-brand {
+            color: white;
+        }
+
+        .main-content {
+            margin-left: 250px;
+            padding: 20px;
+        }
+
+        .chart-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .chart-box {
+            flex: 1;
+            max-width: 48%;
+            margin-bottom: 20px;
+        }
+
+        .chart-box canvas {
+            width: 100%;
+            height: 150px;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                display: none;
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .chart-container {
+                flex-direction: column;
+            }
+
+            .chart-box {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="#">Vaccine Admin</a>
+    </nav>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div>
+            <a href="/admindash/">Dashboard</a>
+            <a href="/manageuser/">Manage Users</a>
+            <a href="/manage_centers/">Manage Centers</a>
+            <a href="/vaccinated_users/">View Vaccinated Users</a>
+            <a href="/manage_center/">Add Centers</a>
+            <a href="/manage_feedback/">Feedback</a>
+        </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="main-content">
+        <center>
+            <h1>Welcome to the Admin Panel</h1>
+            <p>This is where you can manage users, centers, and view feedback.</p>
+
+            <div class="chart-container">
+                <div class="chart-box">
+                    <h3>Total Registered Users</h3>
+                    <canvas id="usersChart"></canvas>
+                </div>
+                <div class="chart-box">
+                    <h3>Vaccinated vs Non-Vaccinated Users</h3>
+                    <canvas id="vaccinatedChart"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-box mt-4">
+                <h3>Total Registered Centers</h3>
+                <canvas id="centersChart"></canvas>
+            </div>
+        </center>
+    </div>
+
+    <script>
+        async function fetchDashboardData() {
+            try {
+                const response = await fetch('/api/dashboard-data/');
+                const data = await response.json();
+
+                if (data.error) {
+                    console.error('Error fetching data:', data.error);
+                    return;
+                }
+
+                const { total_users, vaccinated_users, non_vaccinated_users, total_centers } = data;
+
+                updateUsersChart(total_users);
+                updateVaccinationChart(vaccinated_users, non_vaccinated_users);
+                updateCentersChart(total_centers);
+            } catch (error) {
+                console.error('Error fetching dashboard data:', error);
+            }
+        }
+
+        function updateUsersChart(totalUsers) {
+            usersChart.data.datasets[0].data = [totalUsers];
+            usersChart.update();
+        }
+
+        function updateVaccinationChart(vaccinated, nonVaccinated) {
+            vaccinatedChart.data.datasets[0].data = [vaccinated, nonVaccinated];
+            vaccinatedChart.update();
+        }
+
+        function updateCentersChart(totalCenters) {
+            centersChart.data.labels = ['Total Centers'];
+            centersChart.data.datasets[0].data = [totalCenters];
+            centersChart.update();
+        }
+
+        const usersChart = new Chart(document.getElementById('usersChart').getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: ['Total Users'],
+                datasets: [{
+                    label: 'Number of Registered Users',
+                    data: [],
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        const vaccinatedChart = new Chart(document.getElementById('vaccinatedChart').getContext('2d'), {
+            type: 'pie',
+            data: {
+                labels: ['Vaccinated', 'Non-Vaccinated'],
+                datasets: [{
+                    label: 'Vaccination Status',
+                    data: [],
+                    backgroundColor: ['rgba(75, 192, 192, 0.2)', 'rgba(255, 99, 132, 0.2)'],
+                    borderColor: ['rgba(75, 192, 192, 1)', 'rgba(255, 99, 132, 1)'],
+                    borderWidth: 1
+                }]
+            }
+        });
+
+        const centersChart = new Chart(document.getElementById('centersChart').getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: [],
+                datasets: [{
+                    label: 'Number of Centers',
+                    data: [],
+                    backgroundColor: 'rgba(255, 159, 64, 0.2)',
+                    borderColor: 'rgba(255, 159, 64, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', fetchDashboardData);
+    </script>
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

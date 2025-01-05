@@ -1,0 +1,195 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Table</title>
+    <link rel="icon" href="{% static 'hello/media/vaccine-logo.png' %}" type="image/png">
+    <link rel="stylesheet" href="{% static 'hello/center_home.css' %}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #bbeee3;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #f7faf8;
+            padding: 10px 20px;
+        }
+
+        header img {
+            height: 50px;
+        }
+
+        header nav {
+            display: flex;
+            align-items: center;
+        }
+
+        header nav a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: rgb(14, 13, 13);
+            font-weight: bold;
+        }
+
+        header nav .logout a {
+            padding: 5px 10px;
+            background-color: #f44336;
+            border-radius: 5px;
+            color: white;
+        }
+
+        .profile-icon {
+            margin-left: 15px;
+            font-size: 1.5rem;
+        }
+
+        main {
+            padding: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .report-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            margin: 10px 0;
+            background: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .button-container {
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+        }
+
+        .approve-btn, .reject-btn {
+            padding: 8px 12px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            color: white;
+        }
+
+        .approve-btn {
+            background-color: #4caf50;
+        }
+
+        .reject-btn {
+            background-color: #f44336;
+        }
+
+        .approve-btn:hover,
+        .reject-btn:hover {
+            opacity: 0.9;
+        }
+
+        .filter-section {
+            margin-bottom: 20px;
+        }
+
+        .filter-section input {
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .filter-section button {
+            padding: 10px 15px;
+            font-size: 1rem;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        footer {
+position: fixed;
+left: 0;
+bottom: 0;
+width: 100%;
+background-color: rgb(240, 231, 231);
+color: rgb(74, 67, 67);
+text-align: center;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <img src="{% static 'hello/media/vaccine-logo.png' %}" alt="Vaccine Logo">
+        <nav>
+            {% if success %}
+            <div class="alert alert-success">{{ success }}</div>
+            {% endif %}
+            {% if rejected %}
+            <div class="alert alert-success">{{ rejected }}</div>
+            {% endif %}
+            <a href="/centerhome/">Home</a>
+            <button class="logout"><a href="/mainIndex/">Logout</a></button>
+            <div class="profile-icon"><a href="/centerProfile/">👤</a></div>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Booking Reports</h1>
+        <div class="filter-section">
+            <form method="GET" action="/filterDate/">
+                <label for="date">Select Date: </label>
+                <input type="date" id="date" name="date" value="{{ selected_date }}">
+                <button type="submit">Filter</button>
+            </form>
+        </div>
+
+        {% if reports %}
+            {% for report in reports %}
+            <div class="report-card">
+                <p><strong>Child Name:</strong> {{ report.childname }}</p>
+                <p><strong>Date:</strong> {{ report.cdate }}</p>
+                <p><strong>Vaccine:</strong> {{ report.cname }}</p>
+                <div class="button-container">
+                    {% if report.status == "Pending" %}
+                        <form method="POST" action="{% url 'update_status' %}">
+                            {% csrf_token %}
+                            <input type="hidden" name="report_id" value="{{ report.id }}">
+                            <input type="hidden" name="action" value="approve">
+                            <button type="submit" class="approve-btn" action="/bookingvc/">Approve</button>
+                        </form>
+                        <form method="POST" action="{% url 'update_status' %}">
+                            {% csrf_token %}
+                            <input type="hidden" name="report_id" value="{{ report.id }}">
+                            <input type="hidden" name="action" value="reject">
+                            <button type="submit" class="reject-btn">Reject</button>
+                        </form>
+                    {% else %}
+                    {% if report.status == "Rejected" %}
+                        <button disabled class="reject-btn">{{ report.status }}</button>
+                    {% else %}
+                    <button disabled class="approve-btn">{{ report.status }}</button>
+                    {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <p>No reports found for the selected date.</p>
+        {% endif %}
+    </main>
+
+    <footer>
+        &copy; Get Vaccinated for a Healthier Tomorrow
+    </footer>
+</body>
+</html>

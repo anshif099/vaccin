@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vaccine Details</title>
+    <link rel="icon" href="{% static 'hello/media/vaccine-logo.png' %}" type="image/png">
+    <link rel="stylesheet" href="{% static 'hello/details.css' %}">
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <img src="{% static 'hello/media/vaccine-logo.png' %}" alt="Vaccine Logo">
+    </div>
+    <nav>
+        <a href="/index/">Home</a>
+        <button class="logout-button"><a href="/mainIndex/"> Logout </a></button>
+        <div class="profile-icon">👤</div>
+    </nav>
+</header>
+
+<div class="details-container">
+    <div class="card">
+        <h2>Name</h2>
+        <button><a href="/userprofile/" class="text-color">View Profile</a></button>
+    </div>
+    <div class="card">
+        <h2>Vaccination History</h2>
+        <p>View Full Details Of Your Previous Vaccination</p>
+        <button><a href="/view_certificate/" class="text-color">Vaccination History</a></button>
+    </div>
+</div>
+
+<div class="feedback">
+    <button><a href="/userfeedback/" class="text-color">Feedback</a></button>
+</div>
+
+<footer>
+    &copy; Get Vaccinated for a <span>Healthier Tomorrow</span>
+</footer>
+
+</body>
+</html>

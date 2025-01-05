@@ -1,0 +1,95 @@
+body {
+    background-color: #f0f8ff;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Prevent scrolling */
+  }
+  .background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1; /* Ensure the background is behind all content */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    animation: changeBackground 32s infinite;
+  }
+  /* Content styles */
+  .content {
+    position: relative;
+    z-index: 1; /* Ensure content is above the background */
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  }
+  header {
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 10;
+    background-color: #ffffff;
+  }
+  .logo img {
+    height: 50px;
+  }
+  nav a {
+    color: #333; /* Darker color for better visibility */
+    font-weight: bold;
+    text-decoration: none;
+    padding: 10px 15px;
+    transition: color 0.3s;
+  }
+  nav a:hover {
+    color: #007bff; /* Add a hover effect with blue color */
+  }
+  .user-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #d9d9d9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    color: #666;
+    border: 2px solid #fff;
+    transition: transform 0.3s;
+  }
+  .user-icon:hover {
+    transform: scale(1.1);
+  }
+  .user-icon-link {
+    text-decoration: none; /* Remove underline from link */
+  }
+  .main-content img {
+    width: 100%;
+    height: calc(100vh - 80px);
+    object-fit: cover;
+  }
+  footer {
+    background-color: #f0f8ff;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 18px;
+    font-weight: bold;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.1);
+  }
+  .logout-button {
+    padding: 8px 16px;
+    font-size: 16px;
+    color: white;
+    background-color: #ff4d4d;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.logout-button:hover {
+    background-color: #e04444;
+}
+

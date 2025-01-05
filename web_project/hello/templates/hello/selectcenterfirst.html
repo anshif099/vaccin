@@ -1,0 +1,154 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vaccination Booking</title>
+    <link rel="icon" href="{% static 'hello/media/vaccine-logo.png' %}" type="image/png">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'hello/booknow.css' %}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        .card {
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .center-card {
+            margin-bottom: 1rem;
+        }
+        
+        /* Premium Search Bar Style */
+        .search-bar-container {
+            position: relative;
+        }
+        .search-bar-container input {
+            padding-left: 2.5rem;
+            border-radius: 30px;
+            border: 1px solid #ced4da;
+            font-size: 1rem;
+        }
+        .search-bar-container i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+    <header class="bg-light border-bottom py-3">
+        <div class="container d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center">
+                <img src="{% static 'hello/media/vaccine-logo.png' %}" alt="Logo" class="me-2" style="width: 40px;">
+                <span class="fs-4 fw-bold">Vaccine</span>
+            </div>
+            <nav class="d-none d-md-flex">
+                <a href="/index/" class="text-decoration-none mx-2">Home</a>
+                <button class="logout"><a href="/mainIndex/">Logout</a></button>
+            </nav>
+            <!-- Mobile menu toggle -->
+            <button class="navbar-toggler d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#mobileMenu" aria-controls="mobileMenu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </header>
+
+    <main class="container my-4">
+        <div class="form-container">
+            <form id="booking-form" action="/booking/" method="POST">
+                {% csrf_token %}
+                <input type="hidden" id="selected-center-id" name="txtCenterid">
+                <div class="mb-3">
+                    <label for="search-bar" class="form-label">Search Vaccination Centers</label>
+                    <div class="search-bar-container">
+                        <input type="text" id="search-bar" class="form-control" placeholder="Enter center name" onkeyup="filterCenters()">
+                        <i class="fas fa-search"></i> <!-- Search icon -->
+                    </div>
+                </div>
+                <div class="row" id="center-list">
+                    {% for item in items %}
+                    <div class="col-12 center-card" data-center-name="{{ item.CN }}">
+                        <div class="card" onclick="selectCenter('{{ item.CenterID }}')">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ item.CN }}</h5>
+                                <h6 class="card-text">Available Slots</h6>
+                                {% if item.DTP and item.DTP != "false" %}
+                                <option value="DTP">{{ item.DTP }}</option>
+                                {% endif %}
+                                {% if item.HepatitisB and item.HepatitisB != "false" %}
+                                    <option value="HepatitisB">{{ item.HepatitisB }}</option>
+                                {% endif %}
+                                {% if item.Polio and item.Polio != "false" %}
+                                    <option value="Polio">{{ item.Polio }}</option>
+                                {% endif %}
+                                {% if item.Hib and item.Hib != "false" %}
+                                    <option value="Hib">{{ item.Hib }}</option>
+                                {% endif %}
+                                {% if item.Rotavirus and item.Rotavirus != "false" %}
+                                    <option value="Rotavirus">{{ item.Rotavirus }}</option>
+                                {% endif %}
+                                {% if item.PCV and item.PCV != "false" %}
+                                    <option value="PCV">{{ item.PCV }}</option>
+                                {% endif %}
+                                {% if item.Influenza and item.Influenza != "false" %}
+                                    <option value="Influenza">{{ item.Influenza }}</option>
+                                {% endif %}
+                                {% if item.MMR and item.MMR != "false" %}
+                                    <option value="MMR">{{ item.MMR }}</option>
+                                {% endif %}
+                                {% if item.VitaminA and item.VitaminA != "false" %}
+                                    <option value="VitaminA">{{ item.VitaminA }}</option>
+                                {% endif %}
+                                {% if item.Varicella and item.Varicella != "false" %}
+                                    <option value="Varicella">{{ item.Varicella }}</option>
+                                {% endif %}
+                                {% if item.HepatitisA and item.HepatitisA != "false" %}
+                                    <option value="HepatitisA">{{ item.HepatitisA }}</option>
+                                {% endif %}
+                                {% if item.TT and item.TT != "false" %}
+                                    <option value="TT">{{ item.TT }}</option>
+                                {% endif %}
+                                {% if item.HPV and item.HPV != "false" %}
+                                    <option value="HPV">{{ item.HPV }}</option>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer class="bg-light text-center py-3">
+        &copy; Get Vaccinated for a Healthier Tomorrow
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Filter centers based on search input
+        function filterCenters() {
+            const query = document.getElementById('search-bar').value.toLowerCase();
+            const centers = document.querySelectorAll('.center-card');
+            centers.forEach(card => {
+                const centerName = card.getAttribute('data-center-name').toLowerCase();
+                card.style.display = centerName.includes(query) ? '' : 'none';
+            });
+        }
+
+        // Select a center and submit the form
+        function selectCenter(centerId) {
+            document.getElementById('selected-center-id').value = centerId;
+            document.getElementById('booking-form').submit();
+        }
+    </script>
+</body>
+</html>
