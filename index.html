@@ -1,0 +1,350 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vaccine Support for Children</title>
+  <link rel="icon" href="{% static 'hello/media/vaccine-logo.png' %}" type="image/png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="{% static 'hello/main_index.css' %}">  
+
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <!-- logo -->
+    <a class="navbar-brand" href="#" style="display: inline-block;">
+        <img src="{% static 'hello/media/vaccine-logo.png' %}" alt="vaccine logo" style="max-width: 100px; height: auto;" class="logo">
+        </a>
+        <!-- Toggle Button for Mobile -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- navbar links -->
+    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#about-us">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="/createReg/">Register</a></li>
+        <li class="nav-item"><a class="nav-link" href="/DBLogin/">Login</a></li>
+        <li class="nav-item"><a class="nav-link" href="/CDLogin/">Health Professionals<br>Login</a></li>
+      </ul>
+    </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero-section text-center text-white d-flex align-items-center" style="height: 100vh; position: relative; overflow: hidden;">
+    <img src="{% static 'hello/media/banner_image.jpg' %}" alt="banner image" class="img-fluid w-100 h-100" style="object-fit: cover; position: absolute; top: 0; left: 0; z-index: -1;">
+    <!-- Overlay -->
+  <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5);"></div>
+    <div class="container" style="z-index: 1;">
+      <h1 class="display-4 typing-effect">"Vaccinate. Protect. Save Lives."</h1>
+      <p class="lead mt-3">Partner with us to make vaccines accessible to all children.</p>
+      
+      
+      
+    </div>
+  </section>
+
+  <!-- vacci-support information section -->
+  <section id="main-objective" class="py-5 position-relative">
+    <!-- Half-Round Shape -->
+    <div class="half-round-shape"></div>
+    <!-- Content -->
+    <div class="container position-relative">
+      <div class="row align-items-center">
+        <!-- left side text -->
+        <div class="col-md-6">
+          <h2 class="text-center mb-4 main-heading">Main Objective</h2>
+          <p class="main-description">
+            Our mission is to provide reliable, up-to-date, and easily accessible information about vaccines for children. We aim to educate parents, caregivers, and healthcare providers on the importance of vaccination, how vaccines work, and the benefits of timely immunizations.
+          </p>
+        </div>
+        
+        <!-- right column:image -->
+         <div class="col-md-6">
+            <img src="{% static 'hello/media/three_girls.jpg' %}" alt="vaccine information" class="img-fluid rounded shadow zoom-image">
+         </div>
+         <section id="benefits" class="py-5 bg-light">
+            <div class="container">
+                <!-- section heading -->
+                <h2 class="text-center mb-5 benefits-heading">Benefits</h2>
+                <div class="row">
+                    <!-- benefit 1 -->
+                    <div class="col-md-4">
+                        <div class="card text-center shadow-sm">
+                            <div class="card-body">
+                                <div class="benefit-icon mb-3">
+                                    <i class="fas fa-user-md fa-3x text-primary"></i>
+
+                                </div>
+                                <h5 class="card-title">Expert Information</h5>
+                                <p class="card-text">
+                                    Access reliable and up-to-date vaccine information provided by healthcare experts.
+                                </p>
+                            </div>
+                            </div>
+                        </div>
+                <!-- card 2 -->
+                <div class="col-md-4">
+                    <div class="card text-center shadow-sm">
+                        <div class="card-body">
+                            <div class="benefit-icon mb-3">
+                                <i class="fas fa-mobile-alt fa-3x text-success"></i>
+                        </div>
+                        <h5 class="card-title">Easy Accessibility</h5>
+                        <p class="card-text">
+                        Our platform is mobile-friendly and accessible anytime, anywhere.
+                        </p>
+                        </div>
+                    </div>
+                   </div>
+            <!-- card 3 -->
+            <div class="col-md-4">
+                <div class="card text-center shadow-sm">
+                    <div class="card-body">
+                        <div class="benefit-icon mb-3">
+                    <i class="fas fa-shield-alt fa-3x text-warning"></i>
+                    </div>
+                    <h5 class="card-title">Safety First</h5>
+                    <p class="card-text">
+                        Promote child safety with timely reminders for vaccinations and schedules.
+                        </p>
+                        </div>
+                        </div>
+                        </div>
+                        </section>
+        
+          
+        </div>
+        
+        <!-- How it Works Column -->
+        <section id="how-it-works" class="py-5 position-relative">
+            <div class="container">
+                <div class="row align-items-center">
+                    <!-- Left Side: Description -->
+                    <div class="col-md-6">
+                        <h2 class="how-heading mb-4">How It Works</h2>
+                        <p class="how-description">
+                            Our platform simplifies the vaccination process by providing clear and reliable schedules, reminders, and updates. Parents can register their children, track vaccination progress, and get timely notifications. We aim to make vaccination management easy and stress-free for everyone.
+                            </p>
+                            <ul class="how-list">
+                                <li><i class="fas fa-check-circle text-success"></i> Register your child easily.</li>
+                                <li><i class="fas fa-check-circle text-success"></i> Get reminders for upcoming vaccinations.</li>
+                                <li><i class="fas fa-check-circle text-success"></i> Access trustworthy vaccine information.</li>
+                                </ul>
+                            </div>
+                              <!-- Right Side: Image -->
+                              <div class="col-md-6 text-center">
+                                <img src="{% static 'hello/media/group_childrens.jpg' %}" alt="How It Works" class="img-fluid how-image rounded shadow">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- add the half round shape -->
+                    <div class="half-round-shape-how"></div>
+                </div>
+            </section>
+  
+
+  <!-- Services Section -->
+  <section id="services" class="services-section py-5">
+    <div class="container text-center">
+      <h2 class="text-center mb-5">Our Services</h2>
+      <div class="row">
+        <!-- service 1 -->
+        <div class="col-md-4">
+          <div class="service-card text-center p-4">
+            <i class="fas fa-calendar-check fa-3x mb-3 text-success"></i>
+            <h4>Vaccination Scheduling</h4>
+            <p>Never miss an important date with timely reminders for your child's vaccination.</p>
+            </div>
+          </div>
+          <!-- service 2 -->
+          <div class="col-md-4">
+            <div class="service-card text-center p-4">
+                <i class="fas fa-file-medical-alt fa-3x mb-3 text-success"></i>
+                <h4>Digital Records</h4>
+                <p>Securely store and access vaccination records anytime, anywhere.</p>
+        </div>
+        </div>
+        <!-- service 3 -->
+        <div class="col-md-4">
+            <div class="service-card text-center p-4">
+                <i class="fas fa-book-open fa-3x mb-3 text-success"></i>
+                <h4>Vaccine Education</h4>
+                <p>Learn about vaccines, their importance, and the latest health guidelines.</p>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <!-- Service 4 -->
+      <div class="col-md-4">
+        <div class="service-card text-center p-4">
+          <i class="fas fa-map-marker-alt fa-3x mb-3 text-success"></i>
+          <h4>Find Centers</h4>
+          <p>Easily locate nearby vaccination clinics and centers.</p>
+        </div>
+      </div>
+       <!-- Service 5 -->
+       <div class="col-md-4">
+        <div class="service-card text-center p-4">
+          <i class="fas fa-user-md fa-3x mb-3 text-success"></i>
+          <h4>Expert Consultations</h4>
+          <p>Get advice from healthcare professionals for all vaccine-related questions.</p>
+        </div>
+      </div>
+      <!-- service 6 -->
+      <div class="col-md-4">
+        <div class="service-card text-center p-4">
+            <i class="fas fa-hand-holding-heart fa-3x mb-3 text-success"></i>
+            <h4>Emergency Alerts</h4>
+            <p>Notify parents about vaccine recalls, outbreaks of vaccine-preventable diseases, or changes in vaccination guidelines.</p>
+        </div>
+
+  </section>
+
+  <!-- about us section -->
+  <section id="about-us" class="py-5" style="background-color: #f9f9f9;">
+    <div class="container">
+        <h2 class="text-center mb-5">About Vacci Support</h2>
+        
+             <!-- first row -->
+             <div class="row align-items-center mb-5">
+                <!-- Text Content Left -->
+                <div class="col-md-6">
+                <p>"At Vacci Support, we are dedicated to providing parents, caregivers, and communities with reliable information and support for ensuring children receive their vaccinations on time. Our platform aims to simplify the vaccination process by providing reminders, tracking schedules, and offering educational resources."</p>
+             </div>
+              <!-- Right side: Circular Image -->
+              <div class="col-md-6 d-flex justify-content-center">
+                <div class="circle-img-container">
+                    <img src="{% static 'hello/media/facing_girls.jpg' %}" alt="Vaccination Image" class="img-fluid rounded-circle">
+                </div>
+                </div>
+                </div>
+                 <!-- Second Row -->
+                 <div class="row align-items-center mb-5 flex-md-row-reverse">
+                    <!-- Text Content Right -->
+                    <div class="col-md-6">
+                        <p>"Our mission is to make childhood vaccinations accessible and timely by offering a user-friendly platform that ensures children are protected from preventable diseases. We strive to educate families and create a healthier future for every child."</p>
+                    </div>
+             <!-- Circular Image Left -->
+             <div class="col-md-6 d-flex justify-content-center">
+                <div class="circle-img-container">
+                    <img src="{% static 'hello/media/brother_sister.jpg' %}" alt="Vaccination Image" class="img-fluid rounded-circle">
+                </div>
+            </div>
+            </div>
+            </div>
+
+            <!-- contact us section -->
+            <section id="contact-us" class="py-5" style="background-color: #1e7e6d; color: #fff;">
+                <div class="container">
+                  <h2 class="text-center mb-4">Get in Touch</h2>
+                  <p class="text-center mb-5">Reach out to us through our social media platforms. We’re here to help!</p>
+                  <div class="d-flex justify-content-center">
+                    <!-- WhatsApp -->
+                    <a href="https://wa.me/1234567890" target="_blank" class="mx-3" style="text-decoration: none; color: #fff;">
+                      <i class="fab fa-whatsapp fa-3x"></i>
+                    </a>
+                    <!-- LinkedIn -->
+                    <a href="https://linkedin.com/in/yourprofile" target="_blank" class="mx-3" style="text-decoration: none; color: #fff;">
+                      <i class="fab fa-linkedin fa-3x"></i>
+                    </a>
+                    <!-- Instagram -->
+                    <a href="https://instagram.com/yourprofile" target="_blank" class="mx-3" style="text-decoration: none; color: #fff;">
+                      <i class="fab fa-instagram fa-3x"></i>
+                    </a>
+                    <!-- Facebook -->
+                    <a href="https://facebook.com/yourprofile" target="_blank" class="mx-3" style="text-decoration: none; color: #fff;">
+                      <i class="fab fa-facebook fa-3x"></i>
+                    </a>
+                    <!-- Twitter -->
+                    <a href="https://twitter.com/yourprofile" target="_blank" class="mx-3" style="text-decoration: none; color: #fff;">
+                      <i class="fab fa-twitter fa-3x"></i>
+                    </a>
+                  </div>
+                </div>
+              </section>
+
+              <footer id="footer" class="py-4" style="background-color: #212529; color: #f8f9fa;">
+                <div class="container">
+                  <div class="row">
+                    <!-- About Section -->
+                    <div class="col-md-4">
+                      <h4 class="mb-3">About Us</h4>
+                      <p style="font-family: 'Poppins', sans-serif;">
+                        We are committed to providing reliable information and support to ensure every child receives the vaccinations they need on time.
+                      </p>
+                    </div>
+                    <!-- Quick Links -->
+                    <div class="col-md-4">
+                      <h4 class="mb-3">Quick Links</h4>
+                      <ul class="list-unstyled" style="font-family: 'Poppins', sans-serif;">
+                        <li><a href="#main-objective" style="text-decoration: none; color: #fff;">Main Objective</a></li>
+                        <li><a href="#benefits" style="text-decoration: none; color: #fff;">Benefits</a></li>
+                        <li><a href="#how-it-works" style="text-decoration: none; color: #fff;">How It Works</a></li>
+                        <li><a href="#services" style="text-decoration: none; color: #fff;">Services</a></li>
+                        <li><a href="#about-us" style="text-decoration: none; color: #fff;">About Us</a></li>
+                        <li><a href="#contact-us" style="text-decoration: none; color: #fff;">Contact Us</a></li>
+                      </ul>
+                    </div>
+                    <!-- Social Media Links -->
+                    <div class="col-md-4">
+                      <h4 class="mb-3">Follow Us</h4>
+                      <div class="d-flex">
+                        <!-- WhatsApp -->
+                        <a href="https://wa.me/1234567890" target="_blank" class="me-3" style="text-decoration: none; color: #fff;">
+                          <i class="fab fa-whatsapp fa-2x"></i>
+                        </a>
+                        <!-- LinkedIn -->
+                        <a href="https://linkedin.com/in/yourprofile" target="_blank" class="me-3" style="text-decoration: none; color: #fff;">
+                          <i class="fab fa-linkedin fa-2x"></i>
+                        </a>
+                        <!-- Instagram -->
+                        <a href="https://instagram.com/yourprofile" target="_blank" class="me-3" style="text-decoration: none; color: #fff;">
+                          <i class="fab fa-instagram fa-2x"></i>
+                        </a>
+                        <!-- Facebook -->
+                        <a href="https://facebook.com/yourprofile" target="_blank" class="me-3" style="text-decoration: none; color: #fff;">
+                          <i class="fab fa-facebook fa-2x"></i>
+                        </a>
+                        <!-- Twitter -->
+                        <a href="https://twitter.com/yourprofile" target="_blank" class="me-3" style="text-decoration: none; color: #fff;">
+                          <i class="fab fa-twitter fa-2x"></i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <hr style="border-color: rgba(255, 255, 255, 0.2);">
+                  <div class="text-center" style="font-family: 'Poppins', sans-serif; font-size: 0.9rem;">
+                    &copy; Get Vaccinated for a Healthier Tomorrow 
+                  </div>
+                </div>
+              </footer>
+              
+              
+                      
+        
+            
+
+
+
+
+
+
+ 
+
+  
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
